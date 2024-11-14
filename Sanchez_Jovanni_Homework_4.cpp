@@ -29,11 +29,11 @@ void findGreatestSalesperson(int list[], int listSize)
     int bestSalesperson = 0;
     int carsSoldByTheBest = 0;
 
-    for (int currentSalesperson = 0; currentSalesperson < listSize; currentSalesperson++)
+    for (int currentPerson = 0; currentPerson < listSize; currentPerson++)
     {
-        if (list[bestSalesperson] < list[currentSalesperson])
+        if (list[bestSalesperson] < list[currentPerson])
         {
-            bestSalesperson = currentSalesperson;
+            bestSalesperson = currentPerson;
             carsSoldByTheBest = list[bestSalesperson];
         }
     }
@@ -73,47 +73,70 @@ void partTwo()
              << cars[currentSalesperson] << " cars.\n";
     }
 
-    cout << "The total number of cars sold is " << totalNumberOfSoldCars << " cars.";
+    cout << "The total number of cars sold is "
+         << totalNumberOfSoldCars << " cars.";
     findGreatestSalesperson(cars, 10);
 }
 
 string validateDNA(string strandOfDNA)
 {
-    return strandOfDNA;
-}
+    string tempStrand = "";
 
-void split(string str, char del)
-{
-    // declaring temp string to store the curr "word" upto del
-    string temp = "";
-
-    for (int i = 0; i < str.size(); i++)
+    for (int currentChar = 0; currentChar < strandOfDNA.size(); currentChar++)
     {
-        // If cur char is not del, then append it to the cur "word", otherwise
-        // you have completed the word, print it, and start a new word.
-        if (str[i] != del)
+        if (strandOfDNA[currentChar] == 'A' || strandOfDNA[currentChar] == 'C' ||
+            strandOfDNA[currentChar] == 'G' || strandOfDNA[currentChar] == 'T')
         {
-            temp += str[i];
+            tempStrand += strandOfDNA[currentChar];
         }
         else
         {
-            cout << temp << "";
-            temp = "";
+            cout << tempStrand << "";
+            tempStrand = "";
         }
     }
 
-    cout << temp;
+    return tempStrand;
+}
+
+void DNA_to_MRNA(string strandOfDNA)
+{
+    string tempStrand = "";
+
+    for (int currentChar = 0; currentChar < strandOfDNA.size(); currentChar++)
+    {
+        switch (strandOfDNA[currentChar])
+        {
+        case 'A':
+            tempStrand += "U";
+            break;
+        case 'C':
+            tempStrand += "G";
+            break;
+        case 'G':
+            tempStrand += "C";
+            break;
+        case 'T':
+            tempStrand += "A";
+            break;
+        default:
+            cout << tempStrand << "";
+            tempStrand = "";
+            break;
+        }
+    }
+
+    cout << tempStrand;
 }
 
 void partThree()
 {
     string strandOfDNA;
-    char del = '-';
 
     cout << "Please type your strand of DNA: ";
     cin >> strandOfDNA;
 
-    cout << validateDNA(strandOfDNA);
+    DNA_to_MRNA(validateDNA(strandOfDNA));
 }
 
 int validateUserSelection(int userSelection)
