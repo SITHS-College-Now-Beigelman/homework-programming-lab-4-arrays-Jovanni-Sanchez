@@ -9,6 +9,7 @@
 #include <iostream>
 using namespace std;
 
+/* Part 1 */
 void evenOrOdd(int list[], int sizeOfList)
 {
     for (int currentItem = 0; currentItem < sizeOfList; currentItem++)
@@ -22,24 +23,6 @@ void evenOrOdd(int list[], int sizeOfList)
             cout << list[currentItem] << " is an odd number.\n";
         }
     }
-}
-
-void findGreatestSalesperson(int list[], int listSize)
-{
-    int bestSalesperson = 0;
-    int carsSoldByTheBest = 0;
-
-    for (int currentPerson = 0; currentPerson < listSize; currentPerson++)
-    {
-        if (list[bestSalesperson] < list[currentPerson])
-        {
-            bestSalesperson = currentPerson;
-            carsSoldByTheBest = list[bestSalesperson];
-        }
-    }
-
-    cout << "\nSalesperson " << bestSalesperson + 1 << " sold the most cars with "
-         << carsSoldByTheBest << " cars.";
 }
 
 void partOne()
@@ -57,6 +40,27 @@ void partOne()
     }
 
     evenOrOdd(myArray, 8);
+}
+
+/* Part 2 */
+void findGreatestSalesperson(int list[], int listSize)
+{
+    int bestSalesperson = 0;
+    int carsSoldByTheBest = 0;
+    
+    /*  */
+
+    for (int currentPerson = 0; currentPerson < listSize; currentPerson++)
+    {
+        if (list[bestSalesperson] < list[currentPerson])
+        {
+            bestSalesperson = currentPerson;
+            carsSoldByTheBest = list[bestSalesperson];
+        }
+    }
+
+    cout << "\nSalesperson " << bestSalesperson + 1 << " sold the most cars with "
+         << carsSoldByTheBest << " cars.";
 }
 
 void partTwo()
@@ -78,9 +82,13 @@ void partTwo()
     findGreatestSalesperson(cars, 10);
 }
 
+/* Part 3 */
 string validateDNA(string strandOfDNA)
 {
     string tempStrand = "";
+
+    /* The purpose of this function is to catch invalid characters and remove them
+    while  */
 
     for (int currentChar = 0; currentChar < strandOfDNA.size(); currentChar++)
     {
@@ -147,6 +155,7 @@ void partThree()
     DNA_to_MRNA(validateDNA(strandOfDNA));
 }
 
+/* Part selector */
 int validateUserSelection(int userSelection)
 {
     while (userSelection < 1 || userSelection > 3)
@@ -177,6 +186,7 @@ void startDesiredPart(int userSelection)
     }
 }
 
+/* Main */
 int main()
 {
     int selectedPart;
@@ -184,9 +194,7 @@ int main()
     cout << "Please enter which part you want to test (1, 2, or 3): ";
     cin >> selectedPart;
 
-    selectedPart = validateUserSelection(selectedPart);
-
-    startDesiredPart(selectedPart);
+    startDesiredPart(validateUserSelection(selectedPart));
 
     return 0;
 }
