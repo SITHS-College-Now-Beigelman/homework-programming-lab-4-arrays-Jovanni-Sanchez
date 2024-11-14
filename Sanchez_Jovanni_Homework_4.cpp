@@ -9,13 +9,17 @@
 #include <iostream>
 using namespace std;
 
-void filterForEvens(int list[], int listSize)
+void evenOrOdd(int list[], int sizeOfList)
 {
-    for (int index = 0; index < listSize; index++)
+    for (int currentItem = 0; currentItem < sizeOfList; currentItem++)
     {
-        if (list[index] % 2 == 0)
+        if (list[currentItem] % 2 == 0)
         {
-            cout << list[index] << " is an even number.\n";
+            cout << list[currentItem] << " is an even number.\n";
+        }
+        else
+        {
+            cout << list[currentItem] << " is an odd number.\n";
         }
     }
 }
@@ -52,7 +56,7 @@ void partOne()
         myArray[currentItem] = userValue;
     }
 
-    filterForEvens(myArray, 8);
+    evenOrOdd(myArray, 8);
 }
 
 void partTwo()
@@ -140,6 +144,7 @@ int main()
 
     cout << "Please enter which part you want to test (1, 2, or 3): ";
     cin >> selectedPart;
+    cout << "\n"; // For clarity
 
     selectedPart = validateUserSelection(selectedPart);
 
