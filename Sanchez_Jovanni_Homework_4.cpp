@@ -16,7 +16,7 @@ void filterForEvens(int list[], int listSize)
         if (list[index] % 2 == 0)
         {
             cout << list[index] << " is an even number.\n";
-        } 
+        }
     }
 }
 
@@ -35,12 +35,7 @@ void findGreatestSalesperson(int list[], int listSize)
     }
 
     cout << "\nSalesperson " << bestSalesperson << " sold the most cars with "
-    << carsSoldByTheBest << " cars.";
-}
-
-void dna_to_ma(string dnaString)
-{
-
+         << carsSoldByTheBest << " cars.";
 }
 
 void partOne()
@@ -76,39 +71,67 @@ void partTwo()
     findGreatestSalesperson(cars, 10);
 }
 
+void split(string str, char del)
+{
+    // declaring temp string to store the curr "word" upto del
+    string temp = "";
+
+    for (int i = 0; i < str.size(); i++)
+    {
+        // If cur char is not del, then append it to the cur "word", otherwise
+        // you have completed the word, print it, and start a new word.
+        if (str[i] != del)
+        {
+            temp += str[i];
+        }
+        else
+        {
+            cout << temp << "";
+            temp = "";
+        }
+    }
+
+    cout << temp;
+}
+
 void partThree()
 {
-    cout << "idk";
+    string str;
+    char del = '-';
+
+    cin >> str;
+
+    split(str, del);
 }
 
 int validateUserSelection(int userSelection)
 {
-   while (userSelection < 1 || userSelection > 3)
-   {
-      cout << "There are only 3 parts. "
-           << "Please type either 1, 2, or 3 corresponding to "
-           << "your part: ";
-      cin >> userSelection;
-   }
-   return userSelection;
+    while (userSelection < 1 || userSelection > 3)
+    {
+        cout << "There are only 3 parts. "
+             << "Please type either 1, 2, or 3 corresponding to "
+             << "your part: ";
+        cin >> userSelection;
+    }
+    return userSelection;
 }
 
 void startDesiredPart(int userSelection)
 {
-   switch (userSelection)
-   {
-   case 1:
-      partOne();
-      break;
-   case 2:
-      partTwo();
-      break;
+    switch (userSelection)
+    {
+    case 1:
+        partOne();
+        break;
+    case 2:
+        partTwo();
+        break;
     case 3:
-      partThree();
-      break;
-   default:
-      break;
-   }
+        partThree();
+        break;
+    default:
+        break;
+    }
 }
 
 int main()
