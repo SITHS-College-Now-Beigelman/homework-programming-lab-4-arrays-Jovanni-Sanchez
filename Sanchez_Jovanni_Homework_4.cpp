@@ -38,7 +38,7 @@ void findGreatestSalesperson(int list[], int listSize)
         }
     }
 
-    cout << "\nSalesperson " << bestSalesperson << " sold the most cars with "
+    cout << "\nSalesperson " << bestSalesperson + 1 << " sold the most cars with "
          << carsSoldByTheBest << " cars.";
 }
 
@@ -69,10 +69,17 @@ void partTwo()
     for (currentSalesperson = 0; currentSalesperson != 10; currentSalesperson++)
     {
         totalNumberOfSoldCars = totalNumberOfSoldCars + cars[currentSalesperson];
+        cout << "Salesperson " << currentSalesperson + 1 << " has sold "
+             << cars[currentSalesperson] << " cars.\n";
     }
 
     cout << "The total number of cars sold is " << totalNumberOfSoldCars << " cars.";
     findGreatestSalesperson(cars, 10);
+}
+
+string validateDNA(string strandOfDNA)
+{
+    return strandOfDNA;
 }
 
 void split(string str, char del)
@@ -100,12 +107,13 @@ void split(string str, char del)
 
 void partThree()
 {
-    string str;
+    string strandOfDNA;
     char del = '-';
 
-    cin >> str;
+    cout << "Please type your strand of DNA: ";
+    cin >> strandOfDNA;
 
-    split(str, del);
+    cout << validateDNA(strandOfDNA);
 }
 
 int validateUserSelection(int userSelection)
@@ -144,7 +152,6 @@ int main()
 
     cout << "Please enter which part you want to test (1, 2, or 3): ";
     cin >> selectedPart;
-    cout << "\n"; // For clarity
 
     selectedPart = validateUserSelection(selectedPart);
 
