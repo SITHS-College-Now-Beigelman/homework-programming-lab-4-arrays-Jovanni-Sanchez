@@ -84,15 +84,23 @@ string validateDNA(string strandOfDNA)
 
     for (int currentChar = 0; currentChar < strandOfDNA.size(); currentChar++)
     {
-        if (strandOfDNA[currentChar] == 'A' || strandOfDNA[currentChar] == 'C' ||
-            strandOfDNA[currentChar] == 'G' || strandOfDNA[currentChar] == 'T')
+        switch (strandOfDNA[currentChar])
         {
+        case 'A':
             tempStrand += strandOfDNA[currentChar];
-        }
-        else
-        {
-            cout << tempStrand << "";
-            tempStrand = "";
+            break;
+        case 'C':
+            tempStrand += strandOfDNA[currentChar];
+            break;
+        case 'G':
+            tempStrand += strandOfDNA[currentChar];
+            break;
+        case 'T':
+            tempStrand += strandOfDNA[currentChar];
+            break;
+        default:
+            tempStrand += "";
+            break;
         }
     }
 
@@ -120,8 +128,7 @@ void DNA_to_MRNA(string strandOfDNA)
             tempStrand += "A";
             break;
         default:
-            cout << tempStrand << "";
-            tempStrand = "";
+            tempStrand += "";
             break;
         }
     }
@@ -137,8 +144,7 @@ void partThree()
     cin.ignore(); // pausing here works for some reason???
     getline(cin, strandOfDNA);
 
-    strandOfDNA = validateDNA(strandOfDNA);
-    DNA_to_MRNA(strandOfDNA);
+    DNA_to_MRNA(validateDNA(strandOfDNA));
 }
 
 int validateUserSelection(int userSelection)
