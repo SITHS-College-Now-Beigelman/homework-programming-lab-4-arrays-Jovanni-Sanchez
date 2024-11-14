@@ -134,9 +134,11 @@ void partThree()
     string strandOfDNA;
 
     cout << "Please type your strand of DNA: ";
-    cin >> strandOfDNA;
+    cin.ignore(); // pausing here works for some reason???
+    getline(cin, strandOfDNA);
 
-    DNA_to_MRNA(validateDNA(strandOfDNA));
+    strandOfDNA = validateDNA(strandOfDNA);
+    DNA_to_MRNA(strandOfDNA);
 }
 
 int validateUserSelection(int userSelection)
