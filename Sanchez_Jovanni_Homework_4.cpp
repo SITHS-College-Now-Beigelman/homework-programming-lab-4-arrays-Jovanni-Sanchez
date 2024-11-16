@@ -2,10 +2,7 @@
 // Homework 4
 // 11/12/2024
 
-#include <cmath>
-#include <ctime>
 #include <string>
-#include <cstdlib>
 #include <iostream>
 using namespace std;
 
