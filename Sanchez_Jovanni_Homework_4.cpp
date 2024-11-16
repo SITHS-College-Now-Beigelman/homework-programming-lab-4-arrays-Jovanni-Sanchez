@@ -224,34 +224,6 @@ void partThree()
          << ", converted to MRNA is " << DNA_to_MRNA(validateDNA(strandOfDNA));
 }
 
-int validateUserSelection(int userSelection)
-{
-    while (userSelection < 1 || userSelection > 3)
-    {
-        cout << "There are only 3 parts. "
-             << "Please type either 1, 2, or 3 corresponding to "
-             << "your part: ";
-        cin >> userSelection;
-    }
-    return userSelection;
-}
-
-void startDesiredPart(int userSelection)
-{
-    switch (userSelection)
-    {
-    case 1:
-        partOne();
-        break;
-    case 2:
-        partTwo();
-        break;
-    case 3:
-        partThree();
-        break;
-    }
-}
-
 /* MAIN */
 int main()
 {
