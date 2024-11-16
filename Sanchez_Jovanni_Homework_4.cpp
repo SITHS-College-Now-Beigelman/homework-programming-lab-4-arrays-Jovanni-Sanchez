@@ -9,25 +9,28 @@
 #include <iostream>
 using namespace std;
 
-/* The purpose of this  */
+/* This function will filter through a list to find all the even numbers.
+You are require to input a list and the size of the list. After, the function
+will iterate through the items of the list, start a message, print out all the
+even numbers seperated with a comma, then finally end with a period. The final
+message should look like this "The even numbers in your array are:  x, y, z." */
 void filterForEvens(int list[], int sizeOfList)
 {
+    int currentItem = 0;
     string ending = ", ";                           // Allows for changes later
     cout << "The even numbers in your array are: "; // Print before doing anything
 
     for (int currentItem = 0; currentItem != sizeOfList; currentItem++)
     {
-        if (list[currentItem] % 2 == 0)
+
+        if ((list[currentItem] % 2 == 0))
         {
             // Print the currentItem from the list, followed by a comma
             cout << list[currentItem] << ending;
         }
-        else if ((list[currentItem] + 1) == sizeOfList)
+
+        if ((currentItem == sizeOfList - 1))
         {
-            /* currentItem will never be equal to the sizeOfList normally,
-            but adding one to currentItem allows it to be. This is a easy way
-            of determining if we have reached the end of the list, leading to the
-            ending changing to a period. */
             ending = ".";
         }
     }
@@ -45,7 +48,11 @@ as numerals always have a suffix:
 */
 string ordinalNumbers(int originalNumber)
 {
-    string numberWithSuffix = "";
+    string numberWithSuffix = ""; // Setup a string for the number + suffix
+
+    /* A switch statement is used for clarity and ease of use. If new entries for
+    ordinal numbers such as 21st, 32nd, or 103rd are needed, they can easily be
+    added as exeption cases.  */
 
     switch (originalNumber + 1) // Makes more sense to humans
     {
@@ -64,9 +71,12 @@ string ordinalNumbers(int originalNumber)
         break;
     }
 
-    return numberWithSuffix;
+    return numberWithSuffix; // return the number with its suffix
 }
 
+/* Contains all the code need for part 1 of the Homework. myArray is setup with
+8 slots avaliable, the user enters 8 numbers, the list is inputed into a function
+to filter out the evens and print out a complete list of those evens. */
 void partOne()
 {
     int myArray[8];
@@ -83,7 +93,7 @@ void partOne()
     }
 
     filterForEvens(myArray, 8);
-    cout << endl;
+    cout << "\n";
 }
 
 /* PART 2 - TOTAL # OF CARS + BEST SALESPERSON IN DEALERSHIP */
@@ -221,7 +231,8 @@ void partThree()
     MRNA strand. */
 
     cout << "Your DNA strand, " << validateDNA(strandOfDNA)
-         << ", converted to MRNA is " << DNA_to_MRNA(validateDNA(strandOfDNA));
+         << ", converted to MRNA is " << DNA_to_MRNA(validateDNA(strandOfDNA))
+         << ".";
 }
 
 /* MAIN */
