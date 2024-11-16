@@ -9,7 +9,7 @@
 #include <iostream>
 using namespace std;
 
-/* Part 1 */
+/* PART 1 - FILTER FOR EVENS WITHIN myArray */
 void evenOrOdd(int list[], int sizeOfList)
 {
     for (int currentItem = 0; currentItem < sizeOfList; currentItem++)
@@ -42,13 +42,11 @@ void partOne()
     evenOrOdd(myArray, 8);
 }
 
-/* Part 2 */
+/* PART 2 - TOTAL # OF CARS + BEST SALESPERSON IN DEALERSHIP */
 void findGreatestSalesperson(int list[], int listSize)
 {
     int bestSalesperson = 0;
     int carsSoldByTheBest = 0;
-    
-    /*  */
 
     for (int currentPerson = 0; currentPerson < listSize; currentPerson++)
     {
@@ -82,80 +80,106 @@ void partTwo()
     findGreatestSalesperson(cars, 10);
 }
 
-/* Part 3 */
+/* The purpose of this function is to clean up DNA strands. The function will
+iterate through each character in the strandOfDNA until it reaches the end of the
+strand. Only valid characters will be returned in a clean string while the invalid
+characters are caught and deleted. */
 string validateDNA(string strandOfDNA)
 {
-    string tempStrand = "";
+    string cleanStrand = ""; // Setup a clean strand of DNA
 
-    /* The purpose of this function is to catch invalid characters and remove them
-    while  */
+    /* The switch statement is used to identify valid characters. If the
+    strandOfDNA has 'A', 'C', 'G', or 'T', then they will be add to the clean
+    strand. For every other character in the strandOfDNA, nothing is added to
+    the cleanStrand. */
 
-    for (int currentChar = 0; currentChar < strandOfDNA.size(); currentChar++)
+    for (int currentChar = 0; currentChar != strandOfDNA.size(); currentChar++)
     {
         switch (strandOfDNA[currentChar])
         {
         case 'A':
-            tempStrand += strandOfDNA[currentChar];
+            cleanStrand += strandOfDNA[currentChar];
             break;
         case 'C':
-            tempStrand += strandOfDNA[currentChar];
+            cleanStrand += strandOfDNA[currentChar];
             break;
         case 'G':
-            tempStrand += strandOfDNA[currentChar];
+            cleanStrand += strandOfDNA[currentChar];
             break;
         case 'T':
-            tempStrand += strandOfDNA[currentChar];
+            cleanStrand += strandOfDNA[currentChar];
             break;
         default:
-            tempStrand += "";
+            cleanStrand += "";
             break;
         }
     }
 
-    return tempStrand;
+    return cleanStrand; // Return the newly cleaned DNA strand
 }
 
-void DNA_to_MRNA(string strandOfDNA)
+/* The purpose of this function is to convert DNA strands to MRNA strands.
+The function will identify valid DNA characters and convert them to equivalent
+MRNA characters. The function will iterate through each character in the strand of
+DNA until it reaches the end of the strand. Only valid characters will be returned
+in a clean string of MRNA while the invalid characters are caught and deleted. */
+string DNA_to_MRNA(string strandOfDNA)
 {
-    string tempStrand = "";
+    string strandOfMRNA = ""; // Setup a strand of MRNA
 
-    for (int currentChar = 0; currentChar < strandOfDNA.size(); currentChar++)
+    /* The switch statement is used to identify valid characters. If the current
+    character within the strandOfDNA is 'A', 'C', 'G', or 'T', then it will be
+    converted to its corresponding MRNA character: 'U', 'G', 'C', or 'A'. For
+    every other character in the strandOfDNA, nothing is added to the
+    strandOfMRNA. */
+
+    for (int currentChar = 0; currentChar != strandOfDNA.size(); currentChar++)
     {
         switch (strandOfDNA[currentChar])
         {
         case 'A':
-            tempStrand += "U";
+            strandOfMRNA += "U";
             break;
         case 'C':
-            tempStrand += "G";
+            strandOfMRNA += "G";
             break;
         case 'G':
-            tempStrand += "C";
+            strandOfMRNA += "C";
             break;
         case 'T':
-            tempStrand += "A";
+            strandOfMRNA += "A";
             break;
         default:
-            tempStrand += "";
+            strandOfMRNA += "";
             break;
         }
     }
 
-    cout << tempStrand;
+    return strandOfMRNA; // Return the strand of MRNA
 }
 
+/* Contains all the code need for part 3 of the Homework. A strandOfDNA is setup,
+the user enters their DNA strand, its cleaned up to take out invalid characters,
+then convert to a MRNA strand. */
 void partThree()
 {
-    string strandOfDNA;
+    string strandOfDNA; // Stores a strand of DNA for later
 
     cout << "Please type your strand of DNA: ";
-    cin.ignore(); // pausing here works for some reason???
-    getline(cin, strandOfDNA);
+    cin.ignore();              // pausing here works for some reason???
+    getline(cin, strandOfDNA); // Get the user's COMPLETE strand of DNA, with
+    // spaces and everything. Only works after ingnoring cin for some reason.
 
-    DNA_to_MRNA(validateDNA(strandOfDNA));
+    /* After getting the user's strandOfDNA, it's then inputted into the functions
+    "validateDNA" and "DNA_to_MRNA". The results of both functions are printed
+    out in a neat sentence to show the user their clean DNA strand and their
+    MRNA strand. */
+
+    cout << "\n"
+         << "Your DNA strand, " << validateDNA(strandOfDNA)
+         << ", converted to MRNA is " << DNA_to_MRNA(validateDNA(strandOfDNA));
 }
 
-/* Part selector */
 int validateUserSelection(int userSelection)
 {
     while (userSelection < 1 || userSelection > 3)
@@ -181,12 +205,10 @@ void startDesiredPart(int userSelection)
     case 3:
         partThree();
         break;
-    default:
-        break;
     }
 }
 
-/* Main */
+/* MAIN */
 int main()
 {
     int selectedPart;
