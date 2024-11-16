@@ -32,10 +32,10 @@ void filterForEvens(int list[], int sizeOfList)
 ordinal numbers. Ordinal numbers, such as ‘first’, ‘second’ and ‘third’, show the
 order, position or importance of things in a list or sequence. Ordinals written as
 numerals always have a suffix:
-    • ‘-st’ (‘first’, ‘21st’)
-    • ‘-nd’ (‘second’, ‘32nd’)
-    • ‘-rd’ (‘third’, ‘103rd’)
-    • ‘-th’ (‘fourth’, ‘15th’, ‘55th’ and so on).
+• ‘-st’ (‘first’, ‘21st’)
+• ‘-nd’ (‘second’, ‘32nd’)
+• ‘-rd’ (‘third’, ‘103rd’)
+• ‘-th’ (‘fourth’, ‘15th’, ‘55th’ and so on).
 */
 string ordinalNumbers(int originalNumber)
 {
