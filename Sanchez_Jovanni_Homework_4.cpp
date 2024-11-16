@@ -9,20 +9,56 @@
 #include <iostream>
 using namespace std;
 
-/* PART 1 - FILTER FOR EVENS WITHIN myArray */
-void evenOrOdd(int list[], int sizeOfList)
+/* The purpose of this  */
+void filterForEvens(int list[], int sizeOfList)
 {
+    string ending = ", "; // Allows for changes later
+    cout << "The even numbers in your array are: ";
+
     for (int currentItem = 0; currentItem < sizeOfList; currentItem++)
     {
         if (list[currentItem] % 2 == 0)
         {
-            cout << list[currentItem] << " is an even number.\n";
+            cout << list[currentItem] << ending;
         }
-        else
+        else if ((list[currentItem] + 1) == sizeOfList)
         {
-            cout << list[currentItem] << " is an odd number.\n";
+            ending = ".";
         }
     }
+}
+
+/* This function will take a number and return it as a string to display
+ordinal numbers. Ordinal numbers, such as ‘first’, ‘second’ and ‘third’, show the
+order, position or importance of things in a list or sequence. Ordinals written as
+numerals always have a suffix:
+    • ‘-st’ (‘first’, ‘21st’)
+    • ‘-nd’ (‘second’, ‘32nd’)
+    • ‘-rd’ (‘third’, ‘103rd’)
+    • ‘-th’ (‘fourth’, ‘15th’, ‘55th’ and so on).
+*/
+string ordinalNumbers(int originalNumber)
+{
+    string numberWithSuffix = "";
+
+    switch (originalNumber + 1) // Makes more sense to humans
+    {
+    case 1:
+        numberWithSuffix = "1st";
+        break;
+    case 2:
+        numberWithSuffix = "2nd";
+        break;
+    case 3:
+        numberWithSuffix = "3rd";
+        break;
+    default:
+        // to_string turns integers to strings
+        numberWithSuffix = to_string(originalNumber + 1) + "th";
+        break;
+    }
+
+    return numberWithSuffix;
 }
 
 void partOne()
@@ -33,13 +69,14 @@ void partOne()
     for (currentItem = 0; currentItem != 8; currentItem++)
     {
         int userValue;
-        cout << "Please enter a number: ";
+        cout << "Please enter your " << ordinalNumbers(currentItem)
+             << " number: ";
         cin >> userValue;
 
         myArray[currentItem] = userValue;
     }
 
-    evenOrOdd(myArray, 8);
+    filterForEvens(myArray, 8);
 }
 
 /* PART 2 - TOTAL # OF CARS + BEST SALESPERSON IN DEALERSHIP */
