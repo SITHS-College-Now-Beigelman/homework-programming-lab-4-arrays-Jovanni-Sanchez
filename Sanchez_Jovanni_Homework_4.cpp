@@ -12,26 +12,32 @@ using namespace std;
 /* The purpose of this  */
 void filterForEvens(int list[], int sizeOfList)
 {
-    string ending = ", "; // Allows for changes later
-    cout << "The even numbers in your array are: ";
+    string ending = ", ";                           // Allows for changes later
+    cout << "The even numbers in your array are: "; // Print before doing anything
 
-    for (int currentItem = 0; currentItem < sizeOfList; currentItem++)
+    for (int currentItem = 0; currentItem != sizeOfList; currentItem++)
     {
         if (list[currentItem] % 2 == 0)
         {
+            // Print the currentItem from the list, followed by a comma
             cout << list[currentItem] << ending;
         }
         else if ((list[currentItem] + 1) == sizeOfList)
         {
+            /* currentItem will never be equal to the sizeOfList normally,
+            but adding one to currentItem allows it to be. This is a easy way
+            of determining if we have reached the end of the list, leading to the
+            ending changing to a period. */
             ending = ".";
         }
     }
 }
 
-/* This function will take a number and return it as a string to display
+/*
+This function will take a number and return it as a string to display
 ordinal numbers. Ordinal numbers, such as ‘first’, ‘second’ and ‘third’, show the
-order, position or importance of things in a list or sequence. Ordinals written as
-numerals always have a suffix:
+order, position or importance of things in a list or sequence. Ordinals written
+as numerals always have a suffix:
 • ‘-st’ (‘first’, ‘21st’)
 • ‘-nd’ (‘second’, ‘32nd’)
 • ‘-rd’ (‘third’, ‘103rd’)
@@ -77,6 +83,7 @@ void partOne()
     }
 
     filterForEvens(myArray, 8);
+    cout << endl;
 }
 
 /* PART 2 - TOTAL # OF CARS + BEST SALESPERSON IN DEALERSHIP */
@@ -115,6 +122,7 @@ void partTwo()
     cout << "The total number of cars sold is "
          << totalNumberOfSoldCars << " cars.";
     findGreatestSalesperson(cars, 10);
+    cout << endl;
 }
 
 /* The purpose of this function is to clean up DNA strands. The function will
@@ -212,8 +220,7 @@ void partThree()
     out in a neat sentence to show the user their clean DNA strand and their
     MRNA strand. */
 
-    cout << "\n"
-         << "Your DNA strand, " << validateDNA(strandOfDNA)
+    cout << "Your DNA strand, " << validateDNA(strandOfDNA)
          << ", converted to MRNA is " << DNA_to_MRNA(validateDNA(strandOfDNA));
 }
 
@@ -248,12 +255,8 @@ void startDesiredPart(int userSelection)
 /* MAIN */
 int main()
 {
-    int selectedPart;
-
-    cout << "Please enter which part you want to test (1, 2, or 3): ";
-    cin >> selectedPart;
-
-    startDesiredPart(validateUserSelection(selectedPart));
-
+    partOne();
+    partTwo();
+    partThree();
     return 0;
 }
