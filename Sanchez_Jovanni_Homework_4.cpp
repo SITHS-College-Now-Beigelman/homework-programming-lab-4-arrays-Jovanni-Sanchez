@@ -16,22 +16,29 @@ even numbers seperated with a comma, then finally end with a period. The final
 message should look like this "The even numbers in your array are:  x, y, z." */
 void filterForEvens(int list[], int sizeOfList)
 {
-    int currentItem;
+    int evenNumbers = 0;
     string ending = ", ";                           // Allows for changes later
     cout << "The even numbers in your array are: "; // Print before doing anything
 
-    for (currentItem = 0; currentItem < sizeOfList; currentItem++)
+    for (int currentItem = 0; currentItem != sizeOfList; currentItem++)
     {
+        cout << "\n\nCURRENT ITEM: " << currentItem << "\n\n";
+
         if (currentItem == sizeOfList - 1)
         {
-            // currentItem will never be equal to sizeOfList normally
             ending = ".";
         }
-        if ((list[currentItem] % 2 == 0))
+        if (list[currentItem] % 2 == 0)
         {
             // Print the currentItem from the list, followed by a comma
             cout << list[currentItem] << ending;
+            evenNumbers++;
         }
+    }
+
+    if (evenNumbers == 0)
+    {
+        cout << "none.";
     }
 }
 
