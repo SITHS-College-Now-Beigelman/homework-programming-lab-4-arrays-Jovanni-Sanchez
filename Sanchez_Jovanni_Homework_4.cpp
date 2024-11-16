@@ -22,8 +22,6 @@ void filterForEvens(int list[], int sizeOfList)
 
     for (int currentItem = 0; currentItem != sizeOfList; currentItem++)
     {
-        cout << "\n\nCURRENT ITEM: " << currentItem << "\n\n";
-
         if (currentItem == sizeOfList - 1)
         {
             ending = ".";
@@ -102,33 +100,48 @@ void partOne()
     cout << "\n";
 }
 
-/* PART 2 - TOTAL # OF CARS + BEST SALESPERSON IN DEALERSHIP */
+/* This function will filter through a list to find the greatest Salesperson.
+A variable for the best Salesperson and how many cars they have sold are setup
+before filitering through the list. By default, the best salesperson is the 1st
+salesperson. The filter works by seeing if the cars sold by best salesperson is
+less than the current salesperson. If it is, then the current salesperson becomes
+the new best salesperson and the amount of cars they have sold is stored. Once the
+function is finished iterating through the list, it will print out who the best
+salesperson is and how many cars they have sold. */
 void findGreatestSalesperson(int list[], int listSize)
 {
-    int bestSalesperson = 0;
-    int carsSoldByTheBest = 0;
+    int bestSalesperson = 0;   // Stores the best salesperson
+    int carsSoldByTheBest = 0; // Stores the amonut of cars sold by the best
 
-    for (int currentPerson = 0; currentPerson < listSize; currentPerson++)
+    for (int currentSalesperson = 0;
+         currentSalesperson < listSize;
+         currentSalesperson++)
     {
-        if (list[bestSalesperson] < list[currentPerson])
+        if (list[bestSalesperson] < list[currentSalesperson])
         {
-            bestSalesperson = currentPerson;
+            bestSalesperson = currentSalesperson;
             carsSoldByTheBest = list[bestSalesperson];
         }
     }
 
+    // Prints the best salesperson + the number of cars they sold
     cout << "\nSalesperson " << bestSalesperson + 1 << " sold the most cars with "
          << carsSoldByTheBest << " cars.";
 }
 
+/* Contains all the code for part 2. For every salesperson in the cars list,
+their number and the amount of cars they have sold is printed. Alongside printing
+the salespeople, the loop also adds up the total amount of cars sold at this
+dealership before transitioning to the findGreatestSalesperson function to find
+and print out the best salesperson in the dealership. */
 void partTwo()
 {
-    int currentSalesperson;
-    int theBestSalespersonEver;
     int totalNumberOfSoldCars = 0;
     int cars[10] = {7, 3, 6, 0, 14, 8, 1, 2, 9, 8};
 
-    for (currentSalesperson = 0; currentSalesperson != 10; currentSalesperson++)
+    for (int currentSalesperson = 0;
+         currentSalesperson != 10;
+         currentSalesperson++)
     {
         totalNumberOfSoldCars = totalNumberOfSoldCars + cars[currentSalesperson];
         cout << "Salesperson " << currentSalesperson + 1 << " has sold "
@@ -228,8 +241,8 @@ void partThree()
 
     cout << "Please type your strand of DNA: ";
     cin.ignore();              // pausing here works for some reason???
-    getline(cin, strandOfDNA); // Get the user's COMPLETE strand of DNA, with
-    // spaces and everything. Only works after ingnoring cin for some reason.
+    getline(cin, strandOfDNA); /* Get the user's COMPLETE strand of DNA, with
+    spaces and everything. Only works after ingnoring cin for some reason. */
 
     /* After getting the user's strandOfDNA, it's then inputted into the functions
     "validateDNA" and "DNA_to_MRNA". The results of both functions are printed
@@ -245,7 +258,9 @@ void partThree()
 int main()
 {
     partOne();
+    cout << "\n";
     partTwo();
+    cout << "\n";
     partThree();
     return 0;
 }
