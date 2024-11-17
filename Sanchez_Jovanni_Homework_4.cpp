@@ -19,10 +19,11 @@ void filterForEvens(int list[], int sizeOfList)
 
     for (int currentItem = 0; currentItem != sizeOfList; currentItem++)
     {
-        if (currentItem == sizeOfList - 1)
+        if ((currentItem == sizeOfList - 1) && (evenNumbers > 0))
         {
             ending = ".";
         }
+
         if (list[currentItem] % 2 == 0)
         {
             // Print the currentItem from the list, followed by a comma
@@ -254,10 +255,12 @@ void partThree()
 /* MAIN */
 int main()
 {
+    cout << "\n";
     partOne();
-    cout << "\n";
+    cout << "\n\n";
     partTwo();
-    cout << "\n";
+    cout << "\n\n";
     partThree();
+    cout << "\n";
     return 0;
 }
