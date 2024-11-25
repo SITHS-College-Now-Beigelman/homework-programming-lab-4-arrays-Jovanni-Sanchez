@@ -194,40 +194,40 @@ string validateDNA(string strandOfDNA)
 The function will identify valid DNA characters and convert them to equivalent
 MRNA characters. The function will iterate through each character in the strand of
 DNA until it reaches the end of the strand. Only valid characters will be returned
-in a clean string of MRNA while the invalid characters are caught and deleted. */
-string DNA_to_MRNA(string strandOfDNA)
+in a clean string of mRNA while the invalid characters are caught and deleted. */
+string DNA_to_mRNA(string strandOfDNA)
 {
-    string strandOfMRNA = ""; // Setup a strand of MRNA
+    string strandOfmRNA = ""; // Setup a strand of MRNA
 
     /* The switch statement is used to identify valid characters. If the current
     character within the strandOfDNA is 'A', 'C', 'G', or 'T', then it will be
-    converted to its corresponding MRNA character: 'U', 'G', 'C', or 'A'. For
+    converted to its corresponding mRNA character: 'U', 'G', 'C', or 'A'. For
     every other character in the strandOfDNA, nothing is added to the
-    strandOfMRNA. */
+    strandOfmRNA. */
 
     for (int currentChar = 0; currentChar != strandOfDNA.size(); currentChar++)
     {
         switch (strandOfDNA[currentChar])
         {
         case 'A':
-            strandOfMRNA += "U";
+            strandOfmRNA += "U";
             break;
         case 'C':
-            strandOfMRNA += "G";
+            strandOfmRNA += "G";
             break;
         case 'G':
-            strandOfMRNA += "C";
+            strandOfmRNA += "C";
             break;
         case 'T':
-            strandOfMRNA += "A";
+            strandOfmRNA += "A";
             break;
         default:
-            strandOfMRNA += "";
+            strandOfmRNA += "";
             break;
         }
     }
 
-    return strandOfMRNA; // Return the strand of MRNA
+    return strandOfmRNA; // Return the strand of MRNA
 }
 
 /* Contains all the code need for part 3 of the Homework. A strandOfDNA is setup,
@@ -248,7 +248,7 @@ void partThree()
     MRNA strand. */
 
     cout << "Your DNA strand, " << validateDNA(strandOfDNA)
-         << ", converted to MRNA is " << DNA_to_MRNA(validateDNA(strandOfDNA))
+         << ", converted to MRNA is " << DNA_to_mRNA(validateDNA(strandOfDNA))
          << ".";
 }
 
