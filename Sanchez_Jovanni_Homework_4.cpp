@@ -261,6 +261,6 @@ int main()
     partTwo();
     cout << "\n\n";
     partThree();
-    cout << "\n";
+    cout << "\n\n";
     return 0;
 }
